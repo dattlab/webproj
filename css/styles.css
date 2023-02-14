@@ -54,8 +54,9 @@ p {
   width: 60%;
 }
 
-#features {
-  padding: 4rem 8rem;
+#features,
+#testimonials {
+  padding: 7% 15%;
 }
 
 .feature-box {
@@ -70,4 +71,32 @@ p {
 
 .feature-icon:hover {
   color: #ff4c68;
+}
+
+#testimonials {
+  text-align: center;
+  background-color: #ff4c68;
+  color: white;
+}
+
+#testimonials h2 {
+  font-weight: 800;
+  font-size: 3rem;
+}
+
+.testimonial-img {
+  border-radius: 100%;
+  width: 6rem;
+  margin: 20px;
+}
+
+#press {
+  background-color: #ff4c68;
+  text-align: center;
+  padding-bottom: 3%;
+}
+
+#press img {
+  width: 10rem;
+  padding: 20px;
 }
