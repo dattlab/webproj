@@ -54,8 +54,7 @@ p {
   width: 60%;
 }
 
-#features,
-#testimonials {
+#features {
   padding: 7% 15%;
 }
 
@@ -88,6 +87,10 @@ p {
   border-radius: 100%;
   width: 6rem;
   margin: 20px;
+}
+
+.carousel-item {
+  padding: 7% 15%;
 }
 
 #press {
