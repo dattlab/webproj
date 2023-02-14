@@ -1,5 +1,8 @@
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
 h1 {
-  font-family: "Montserrat", sans-serif;
   font-size: 3rem;
   font-weight: 900;
   line-height: 1.5;
@@ -22,7 +25,7 @@ h1 {
 }
 
 .iphone {
-  padding: 4rem 0 0 2rem;
+  padding: 4rem 2rem 0 2rem;
 }
 
 .iphone img {
@@ -36,16 +39,36 @@ h1 {
 }
 
 .nav-item {
-  font-family: "Montserrat", sans-serif;
-  padding: 1rem;
+  padding: 0 1rem 0 1rem;
   font-size: 1.3rem;
 }
 
 #features .row {
-  padding: 10rem 8rem 10rem 8rem;
+  padding: 4rem 8rem 4rem 8rem;
+}
+
+.col-lg-4 {
+  padding: 2rem 3.3rem 2rem 3.3rem;
+  text-align: center;
+  color: #8f8f8f;
 }
 
 .col-lg-4 h3 {
+  color: black;
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 800;
+}
+
+.fa-check-circle,
+.fa-bullseye,
+.fa-heart {
+  color: #ef8172;
+  font-size: 5rem;
+  padding-bottom: 1rem;
+}
+
+.fa-check-circle:hover,
+.fa-bullseye:hover,
+.fa-heart:hover {
+  color: #ff4c68;
 }
