@@ -1,1 +1,1 @@
-TinDog Starting Files
+> Dedicated repo for [Angela Yu's Web Dev course](https://www.udemy.com/course/the-complete-web-development-bootcamp/)
