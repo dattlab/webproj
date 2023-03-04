@@ -5,17 +5,19 @@ body {
 h1 {
   font-size: 3.4rem;
   font-weight: 900;
-  line-height: 1.5;
 }
 
 h2 {
-  font-weight: 800;
   font-size: 3rem;
 }
 
 h3 {
-  font-weight: 800;
   font-size: 1.5rem;
+}
+
+h2,
+h3 {
+  font-weight: 800;
 }
 
 p {
@@ -24,11 +26,6 @@ p {
 
 .container-fluid {
   padding: 3% 15% 7%;
-}
-
-#title {
-  background-color: #ff4c68;
-  color: white;
 }
 
 .navbar {
@@ -50,7 +47,6 @@ p {
 }
 
 .nav-link {
-  font-size: 1.2rem;
   font-weight: 400;
 }
 
@@ -69,7 +65,6 @@ p {
 
 .feature-box {
   padding: 2rem 3.3rem;
-  text-align: center;
 }
 
 .feature-icon {
@@ -79,12 +74,6 @@ p {
 
 .feature-icon:hover {
   color: #ff4c68;
-}
-
-#testimonials {
-  text-align: center;
-  background-color: #ff4c68;
-  color: white;
 }
 
 .testimonial-img {
@@ -99,7 +88,6 @@ p {
 
 #press {
   background-color: #ff4c68;
-  text-align: center;
   padding-bottom: 3%;
 }
 
@@ -110,9 +98,61 @@ p {
 
 #pricing {
   padding: 100px;
-  text-align: center;
 }
 
 .pricing-col {
   padding: 2% 2%;
+}
+
+#cta h3 {
+  font-size: 3.5rem;
+}
+
+.cta-download-btn {
+  margin: 5% 1% 0 1%;
+}
+
+.socials {
+  margin: 20px 10px;
+}
+
+h1,
+#cta h3 {
+  line-height: 1.5;
+}
+
+.download-btn,
+.nav-link {
+  font-size: 1.2rem;
+}
+
+.feature-box,
+#testimonials,
+#press,
+#pricing,
+#cta,
+#footer {
+  text-align: center;
+}
+
+#title,
+#testimonials,
+#cta {
+  background-color: #ff4c68;
+  color: white;
+}
+
+#cta,
+#footer {
+  padding: 7% 17%;
+}
+
+@media (max-width: 1128px) {
+  #title {
+    text-align: center;
+  }
+  .title-img {
+    position: static;
+    transform: rotate(0);
+  }
 }
