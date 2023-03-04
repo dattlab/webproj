@@ -9,13 +9,16 @@ h1 {
 }
 
 h2 {
-  font-weight: 800;
   font-size: 3rem;
 }
 
 h3 {
-  font-weight: 800;
   font-size: 1.5rem;
+}
+
+h2,
+h3 {
+  font-weight: 800;
 }
 
 p {
@@ -24,11 +27,6 @@ p {
 
 .container-fluid {
   padding: 3% 15% 7%;
-}
-
-#title {
-  background-color: #ff4c68;
-  color: white;
 }
 
 .navbar {
@@ -47,11 +45,9 @@ p {
 
 .download-btn {
   margin: 5% 3% 5% 0;
-  font-size: 1.2rem;
 }
 
 .nav-link {
-  font-size: 1.2rem;
   font-weight: 400;
 }
 
@@ -70,7 +66,6 @@ p {
 
 .feature-box {
   padding: 2rem 3.3rem;
-  text-align: center;
 }
 
 .feature-icon {
@@ -80,12 +75,6 @@ p {
 
 .feature-icon:hover {
   color: #ff4c68;
-}
-
-#testimonials {
-  text-align: center;
-  background-color: #ff4c68;
-  color: white;
 }
 
 .testimonial-img {
@@ -100,7 +89,6 @@ p {
 
 #press {
   background-color: #ff4c68;
-  text-align: center;
   padding-bottom: 3%;
 }
 
@@ -111,18 +99,10 @@ p {
 
 #pricing {
   padding: 100px;
-  text-align: center;
 }
 
 .pricing-col {
   padding: 2% 2%;
-}
-
-#cta {
-  background-color: #ff4c68;
-  color: white;
-  text-align: center;
-  padding: 7% 17%;
 }
 
 #cta h3 {
@@ -134,14 +114,34 @@ p {
   margin: 5% 1% 0 1%;
 }
 
+.socials {
+  margin: 20px 10px;
+}
+
+.download-btn,
+.nav-link {
+  font-size: 1.2rem;
+}
+
+.feature-box,
+#testimonials,
+#press,
+#pricing,
+#cta,
 #footer {
-  background-color: white;
-  padding: 7% 17%;
   text-align: center;
 }
 
-.socials {
-  margin: 20px 10px;
+#title,
+#testimonials,
+#cta {
+  background-color: #ff4c68;
+  color: white;
+}
+
+#cta,
+#footer {
+  padding: 7% 17%;
 }
 
 @media (max-width: 1128px) {
