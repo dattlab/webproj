@@ -122,15 +122,25 @@ p {
   background-color: #ff4c68;
   color: white;
   text-align: center;
-  padding: 7% 17% 5% 17%;
+  padding: 7% 17% 7% 17%;
 }
 
 #cta h3 {
   font-size: 3rem;
 }
 
-#cta .download-btn {
-  margin: 6% 1%;
+.cta-download-btn {
+  margin: 5% 1% 0 1%;
+}
+
+#footer {
+  background-color: white;
+  padding: 7% 17% 7% 17%;
+  text-align: center;
+}
+
+.socials {
+  padding-bottom: 20px;
 }
 
 @media (max-width: 1128px) {
