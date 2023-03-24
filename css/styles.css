@@ -15,31 +15,31 @@ footer {
   font-family: sans-serif;
 }
 
-[data-key="w"] {
+.w {
   background-image: url("../assets/images/crash.png");
 }
 
-[data-key="a"] {
+.a {
   background-image: url("../assets/images/kick.png");
 }
 
-[data-key="s"] {
+.s {
   background-image: url("../assets/images/snare.png");
 }
 
-[data-key="d"] {
+.d {
   background-image: url("../assets/images/tom1.png");
 }
 
-[data-key="j"] {
+.j {
   background-image: url("../assets/images/tom2.png");
 }
 
-[data-key="k"] {
+.k {
   background-image: url("../assets/images/tom3.png");
 }
 
-[data-key="l"] {
+.l {
   background-image: url("../assets/images/tom4.png");
 }
 
