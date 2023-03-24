@@ -15,25 +15,32 @@ footer {
   font-family: sans-serif;
 }
 
-.w {
+[data-key="w"] {
+  background-image: url("../assets/images/crash.png");
 }
 
-.a {
+[data-key="a"] {
+  background-image: url("../assets/images/kick.png");
 }
 
-.s {
+[data-key="s"] {
+  background-image: url("../assets/images/snare.png");
 }
 
-.d {
+[data-key="d"] {
+  background-image: url("../assets/images/tom1.png");
 }
 
-.j {
+[data-key="j"] {
+  background-image: url("../assets/images/tom2.png");
 }
 
-.k {
+[data-key="k"] {
+  background-image: url("../assets/images/tom3.png");
 }
 
-.l {
+[data-key="l"] {
+  background-image: url("../assets/images/tom4.png");
 }
 
 .set {
@@ -54,7 +61,7 @@ footer {
   color: red;
 }
 
-.drum {
+button {
   outline: none;
   border: 10px solid #404b69;
   font-size: 5rem;
