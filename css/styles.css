@@ -78,3 +78,7 @@ button {
   margin: 10px;
   background-color: white;
 }
+
+.pressed {
+  opacity: 20px;
+}

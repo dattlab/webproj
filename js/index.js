@@ -8,7 +8,6 @@ const audioNames = {
   "l": "tom-4",
 }
 
-const sounds = document.querySelector(".sounds");
 const playSound = key => {
   if (Object.keys(audioNames).includes(key)) {
     let sound = new Audio(`../assets/sounds/${audioNames[key]}.mp3`);
@@ -18,11 +17,26 @@ const playSound = key => {
 
 document.addEventListener("keydown", (event) => {
   playSound(event.key);
+  buttonAnimation(event.key);
 }, {passive: true});
 
 document.querySelector("div.set")
         .addEventListener("click", (event) => {
+          let key = event.target.textContent;
+
           if (event.target.localName !== "button") return;
-          playSound(event.target.textContent);
+
+          playSound(key);
+          buttonAnimation(key);
         }, {passive: true});
 
+function buttonAnimation(key) {
+  let activeButton = document.querySelector(`.${key}`);
+
+  activeButton.classList.add("pressed");
+
+  setTimeout(function () {
+    activeButton.classList.remove("pressed");
+  }, 100);
+  
+}
