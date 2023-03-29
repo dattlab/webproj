@@ -1,3 +1,4 @@
+const soundsDir = "assets/sounds"
 const audioNames = {
   "w": "crash",
   "a": "kick-bass",
@@ -10,7 +11,7 @@ const audioNames = {
 
 const playSound = key => {
   if (Object.keys(audioNames).includes(key)) {
-    let sound = new Audio(`../assets/sounds/${audioNames[key]}.mp3`);
+    let sound = new Audio(`${soundsDir}/${audioNames[key]}.mp3`);
     sound.play();
   }
 }
