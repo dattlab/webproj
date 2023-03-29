@@ -1,84 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 body {
   text-align: center;
-  background-color: #283149;
+  font-family: "Press Start 2P", sans-serif;
+  background-color: #011f3f;
 }
 
-h1 {
-  font-size: 5rem;
-  color: #dbedf3;
-  font-family: "Arvo", cursive;
-  text-shadow: 3px 0 #da0463;
+#header-text {
+  font-size: 3rem;
+  margin: 5%;
+  color: #fef2bf;
 }
 
-footer {
-  color: #dbedf3;
-  font-family: sans-serif;
+div.squares {
+  margin: 0 20%;
 }
 
-.w {
-  background-image: url("../assets/images/crash.png");
+[data-square] {
+  display: inline-block;
+  margin: 25px;
+  border: 10px solid black;
+  border-radius: 20%;
+  height: 200px;
+  width: 200px;
 }
 
-.a {
-  background-image: url("../assets/images/kick.png");
+[data-square="green"] {
+  background-color: green;
 }
 
-.s {
-  background-image: url("../assets/images/snare.png");
+[data-square="red"] {
+  background-color: red;
 }
 
-.d {
-  background-image: url("../assets/images/tom1.png");
+[data-square="yellow"] {
+  background-color: yellow;
 }
 
-.j {
-  background-image: url("../assets/images/tom2.png");
+[data-square="blue"] {
+  background-color: blue;
 }
 
-.k {
-  background-image: url("../assets/images/tom3.png");
+.blinked {
+  opacity: 10%;
 }
 
-.l {
-  background-image: url("../assets/images/tom4.png");
-}
-
-.set {
-  margin: 10% auto;
+.clicked {
+  box-shadow: 0px 0px 20px white;
+  background-color: grey;
 }
 
 .game-over {
   background-color: red;
-  opacity: 0.8;
+  color: yellow;
 }
 
-.pressed {
-  box-shadow: 0 3px 4px 0 #dbedf3;
-  opacity: 0.5;
-}
-
-.red {
-  color: red;
-}
-
-button {
-  outline: none;
-  border: 10px solid #404b69;
-  font-size: 5rem;
-  font-family: "Arvo", cursive;
-  line-height: 2;
-  font-weight: 900;
-  color: #da0463;
-  text-shadow: 3px 0 #dbedf3;
-  border-radius: 15px;
-  display: inline-block;
-  width: 150px;
-  height: 150px;
-  text-align: center;
-  margin: 10px;
-  background-color: white;
-}
-
-.pressed {
-  opacity: 20px;
-}
