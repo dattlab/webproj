@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-const soundsDir = "assets/sounds"
-const audioNames = {
-  "w": "crash",
-  "a": "kick-bass",
-  "s": "snare",
-  "d": "tom-1",
-  "j": "tom-2",
-  "k": "tom-3",
-  "l": "tom-4",
-}
-
-const playSound = key => {
-  if (Object.keys(audioNames).includes(key)) {
-    let sound = new Audio(`${soundsDir}/${audioNames[key]}.mp3`);
-    sound.play();
-=======
 const headerStartText = "Press any key to start";
 const soundsDir = "assets/sounds";
 
@@ -93,7 +76,6 @@ function recordClickSequence(event) {
     counter++;
     colorSound.play();
     addAnimation(`[data-square=${colorClicked}]`, "clicked");
->>>>>>> simon-game
   }
 
   // Check if the user completed the given sequence
