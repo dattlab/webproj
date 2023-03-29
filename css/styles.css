@@ -41,3 +41,17 @@ div.squares {
   background-color: blue;
 }
 
+.blinked {
+  opacity: 10%;
+}
+
+.clicked {
+  box-shadow: 0px 0px 20px white;
+  background-color: grey;
+}
+
+.game-over {
+  background-color: red;
+  color: yellow;
+}
+
