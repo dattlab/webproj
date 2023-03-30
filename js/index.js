@@ -16,7 +16,7 @@ $(".squares div").each(function() {
 // Set starting header-text
 $("#header-text").text(headerStartText);
 
-$(document).on("keydown", handleKeypress);
+document.addEventListener("keydown", handleKeypress);
 $(".squares").on("click", recordClickSequence);
 
 function addNewColor() {
