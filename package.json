@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "Intro Express",
+  "version": "1.0.0",
+  "description": "Introduction to Express.js",
+  "author": "dattlab",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
