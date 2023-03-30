@@ -1,44 +1,11 @@
-const headerStartText = "Press any key to start";
-const soundsDir = "assets/sounds";
-
-// Track current level
-let currentLevel = 0;
-// Track current sequence
-let currentSequence = [];
-// Track user input number
-let counter = 0;
-
-let colors = [];
-$(".squares div").each(function() {
-  colors.push($(this).data("square"))
-});
-
-// Set starting header-text
-$("#header-text").text(headerStartText);
-
-document.addEventListener("keydown", handleKeypress);
-document.querySelector(".squares").addEventListener("click", recordClickSequence);
-
-function addNewColor() {
-  let randomColor = getRandomElement(colors);
-  let colorSound = new Audio(`${soundsDir}/${randomColor}.mp3`);
-
-  // Add new color to current sequence of colors
-  currentSequence.push(randomColor);
-
-  colorSound.play();
-
-  // Add blink animation for new added color in sequence
-  addAnimation(`[data-square=${randomColor}]`, "blinked");
-
-  // Update level
-  currentLevel++;
-
-  // Set header-text to current level
-  $("#header-text").text(`Level ${currentLevel}`);
-
-  // Disable event listener for keypress
-  document.removeEventListener("keydown", handleKeypress);
+const audioNames = {
+  "w": "crash",
+  "a": "kick-bass",
+  "s": "snare",
+  "d": "tom-1",
+  "j": "tom-2",
+  "k": "tom-3",
+  "l": "tom-4",
 }
 
 function recordClickSequence(event) {
