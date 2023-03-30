@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 app.post("/", (req, res) => {
   let postData = req.body;
 
-  res.send(`Sum = ${parseFloat(postData.num1) + parseFloat(postData.num2)}`);
+  res.send(`Sum = ${Number(postData.num1) + Number(postData.num2)}`);
 })
 
 app.listen(port, () => {
