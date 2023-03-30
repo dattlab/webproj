@@ -17,7 +17,7 @@ $(".squares div").each(function() {
 $("#header-text").text(headerStartText);
 
 document.addEventListener("keydown", handleKeypress);
-document.querySelector(".squares").addEventListener("click", recordClickSequence);
+$(".squares").on("click", recordClickSequence);
 
 function addNewColor() {
   let randomColor = getRandomElement(colors);
