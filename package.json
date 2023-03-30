@@ -1,0 +1,14 @@
+{
+  "name": "webproj",
+  "version": "1.0.0",
+  "description": "Dedicated repo for [Angela Yu's Web Dev course](https://www.udemy.com/course/the-complete-web-development-bootcamp/)",
+  "main": "js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dattlab",
+  "license": "ISC",
+  "dependencies": {
+    "superheroes": "^3.0.0"
+  }
+}
