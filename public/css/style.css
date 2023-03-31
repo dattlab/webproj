@@ -1,0 +1,16 @@
+html {
+  background-color: #00010a;
+  margin: 5% 20%;
+}
+
+h1 {
+  font-size: 1.6rem;
+}
+
+.weather-card {
+  padding: 20px;
+  border: 2px solid;
+  border-radius: 10px;
+  background-color: #0a0e14;
+  color: #f9f5d7;
+}

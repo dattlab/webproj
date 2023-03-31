@@ -1,10 +1,10 @@
 {
   "scripts": {
-    "start": "nodemon calculator.js"
+    "start": "nodemon app.js"
   },
-  "name": "Calculators",
+  "name": "QC Weather",
   "version": "1.0.0",
-  "description": "Some calculators",
+  "description": "Display weather in Quezon City, Philippines",
   "author": "dattlab",
   "license": "ISC",
   "dependencies": {
