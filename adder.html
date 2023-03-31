@@ -15,8 +15,17 @@
     <h1>Simple Adder</h1>
 
     <form action="/adder" method="post">
-      <input type="text" name="num1" placeholder="First number"> <br>
-      <input type="text" name="num2" placeholder="Second number"> <br>
+      <input type="text"
+             name="num1"
+             placeholder="First number"
+             <!-- Restrict input to numbers -->
+             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+      <br>
+      <input type="text"
+             name="num2"
+             placeholder="Second number"
+             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+      <br>
 
       <button type="submit" name="submit">Add</button>
     </form> <br>

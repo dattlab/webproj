@@ -15,8 +15,16 @@
     <h1>BMI Calculator</h1>
 
     <form action="/bmi" method="post">
-      <input type="text" name="weight" placeholder="Your weight (kg)"> <br>
-      <input type="text" name="height" placeholder="Your height (cm)"> <br>
+      <input type="text"
+             name="weight"
+             placeholder="Your weight (kg)"
+             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+      <br>
+      <input type="text"
+             name="height"
+             placeholder="Your height (cm)"
+             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+      <br>
       <button type="submit" name="submit">Calculate BMI</button>
     </form>
   
