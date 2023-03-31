@@ -1,13 +1,14 @@
 {
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon calculator.js"
   },
-  "name": "Intro Express",
+  "name": "Calculators",
   "version": "1.0.0",
-  "description": "Introduction to Express.js",
+  "description": "Some calculators",
   "author": "dattlab",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
   }
 }
