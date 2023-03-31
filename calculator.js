@@ -35,7 +35,7 @@ app.post("/bmi", (req, res) => {
   let inputHeight = Number(req.body.height) * 0.01;
   let bmi = inputWeight / (inputHeight ** 2);
 
-  res.send(`Your BMI is ${bmi}`);
+  res.send(`BMI = ${bmi}<br>Classification: ${bmiClassification(bmi)}`);
 });
 
 
@@ -44,3 +44,11 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 })
 
+// Functions ---------------------------
+function bmiClassification(bmi) {
+  // Source: https://obesity.org.ph/know-your-bmi/
+  if (bmi >= 25) return "Obese";
+  else if (bmi >= 23) return "Overweight";
+  else if (bmi >= 18.5) return "Normal";
+  else return "Underweight";
+}
