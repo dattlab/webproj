@@ -1,13 +1,14 @@
 {
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon app.js"
   },
-  "name": "Intro Express",
+  "name": "QC Weather",
   "version": "1.0.0",
-  "description": "Introduction to Express.js",
+  "description": "Display weather in Quezon City, Philippines",
   "author": "dattlab",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
   }
 }
