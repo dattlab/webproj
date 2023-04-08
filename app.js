@@ -14,13 +14,13 @@ app.use(express.static(`${__dirname}/public`));
 
 
 // Get-Post for main page ---------------------------
-app.get("/", (req, res) => {
+app.get("/", (_, res) => {
 
   res.sendFile(`${__dirname}/index.html`);
 
 })
 
-app.post("/", (req, res) => {
+app.post("/", (_, res) => {
 
   res.send();
 
