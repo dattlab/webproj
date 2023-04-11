@@ -1,0 +1,42 @@
+<!-- vim:syntax=html:filetype=html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>To Do List</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/css/style.css" rel="stylesheet">
+  </head>
+  <body>
+
+
+    <header>
+      <% if (isWeekend) { %>
+        <h1 style="color: purple;"><%= dayReadable %></h1>
+      <% } else { %>
+        <h1><%= dayReadable %></h1>
+      <% } %>
+    </header>
+
+
+    <form action="/" method="post">
+      <input id="newTask" type="text" name="newTask" autofocus autocomplete="off">
+
+      <button type="submit">+</button>
+    </form>
+
+
+    <section>
+      <% for (let i=0; i < taskList.length; i++) { %>
+        <label class="taskItem">
+          <input type="checkbox">
+          <span class="taskTitle"><%= taskList[i] %></span>
+          <span class="checkmark"></span>
+        </label>
+      <% } %>
+    </section>
+
+
+  </body>
+</html>
