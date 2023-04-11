@@ -2,12 +2,13 @@
   "scripts": {
     "start": "nodemon app.js"
   },
-  "name": "QC Weather",
+  "name": "To Do App",
   "version": "1.0.0",
-  "description": "Display weather in Quezon City, Philippines",
+  "description": "Simple To Do list app",
   "author": "dattlab",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^3.1.9",
     "express": "^4.18.2",
     "nodemon": "^2.0.22"
   }

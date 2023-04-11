@@ -1,87 +1,65 @@
-// Load plugins
+// ----- Load plugins
 const express = require("express");
 const https = require("https");
 
-// Create express instance
+// ----- Create express instance
 const app = express();
 const port = 3000;
 
-const apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
-const iconURLBase = "https://openweathermap.org/img/wn"
-const apiKey = "9ecf957ed3df3456f632767e5b0f93d3";
-
-// Use express body parser ---------------------------
+// ----- Use express body parser
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-// Load public files ---------------------------
+
+// ----- Load public files
 app.use(express.static(`${__dirname}/public`));
 
+// ----- Set EJS
+app.set("view engine", "ejs");
 
-// Get-Post for main page ---------------------------
+let taskList = [];
+
+// ----- Get-Post for main page
 app.get("/", (req, res) => {
-  res.sendFile(`${__dirname}/index.html`);
+
+  let today = new Date(); 
+  let dateOpts = {
+    weekday: "long",
+    day: "numeric",
+    month: "short"
+  }
+
+  let dayReadable = today.toLocaleString('en-US', dateOpts);
+
+  let isWeekend = (today.getDay() == 6 || today.getDay() == 0) ? true : false;
+  let status = (isWeekend) ? "Time to party!" : "Time to work.";
+
+  res.render("list", {
+    dayReadable: dayReadable,
+    isWeekend: isWeekend,
+    status: status,
+    taskList: taskList
+  });
+
 
 })
-app.post("/index.html", (req, res) => {
-  
-  let city = capitalize(req.body.cityName);
-  let units = "metric";
-  let getURL = `${apiEndpoint}?q=${city.replace(/ /g, "+")}&units=${units}&appid=${apiKey}`;
 
-  https.get(getURL, (response) => {
-    response.on("data", (data) => {
-      const weatherData = JSON.parse(data);
+app.post("/", (req, res) => {
+  let newTask = req.body.newTask;
 
-      const countryCode = weatherData.sys.country;
-      const cityTemp = weatherData.main.temp;
-      const weatherDesc = weatherData.weather[0].description;
-      const windDirection = getWindDirection(weatherData.wind.deg);
-      const icon = weatherData.weather[0].icon;
-      const iconURL = `${iconURLBase}/${icon}@2x.png`;
+  if (newTask !== "" && !(count(taskList, newTask) === 1))
+    taskList.push(req.body.newTask);
 
-      res.send(`
-        <hr>
-        <div class="weather-card">
-          <img src="${iconURL}" alt="weather icon" name="weather icon">
-          <h1>${city} <span style="font-size: 1.2rem">${getFlagEmoji(countryCode)} ${countryCode}</span></h1>
-          <p><strong>Temperature (C):</strong> ${cityTemp}</p>
-          <p><strong>Description:</strong> ${weatherDesc}</p>
-          <p><strong>Wind direction:</strong> ${windDirection}</p>
-        </div>
-        <hr>
-      `);
-    });
-  });
+  res.redirect("/");
 
 });
 
-// Port listener ---------------------------
+// ----- Port listener
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 })
 
-
-// Functions ---------------------------
-function capitalize(str) {
-  const words = str.split(" ");
-
-  for (let i = 0; i < words.length; i++) {
-    words[i] = words[i][0].toUpperCase() + words[i].substring(1);
-  }
-
-  return words.join(" ");
+// ----- Functions
+function count(arr, element) {
+  /* Count number of specified element in array */
+  return arr.filter(e => e === element).length;
 }
-
-function getWindDirection(angle) {
-  const directions = ['↑ N', '↗ NE', '→ E', '↘ SE', '↓ S', '↙ SW', '← W', '↖ NW'];
-  return directions[Math.round(angle / 45) % 8];
-}
-
-function getFlagEmoji(countryCode) {
-  const codePoints = countryCode
-    .toUpperCase()
-    .split('')
-    .map(char =>  127397 + char.charCodeAt());
-  return String.fromCodePoint(...codePoints);
-}
-
