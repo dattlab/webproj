@@ -16,11 +16,44 @@ app.use(express.static(`${__dirname}/public`));
 // ----- Set EJS
 app.set("view engine", "ejs");
 
-let taskList = [];
+let personalTasks = [];
+let workTasks = [];
 
 // ----- Get-Post for main page
 app.get("/", (req, res) => {
+  let today = new Date(); 
+  let dateOpts = {
+    weekday: "long",
+    day: "numeric",
+    month: "long"
+  }
 
+  let dayReadable = today.toLocaleString('en-US', dateOpts);
+  let isWeekend = (today.getDay() == 6 || today.getDay() == 0) ? true : false;
+  let categPage = "";
+  let categ = "Personal"
+
+  res.render("list", {
+    dayReadable: dayReadable,
+    isWeekend: isWeekend,
+    categ: categ,
+    categPage: categPage,
+    taskList: personalTasks
+  });
+})
+
+app.post("/", (req, res) => {
+  let newTask = req.body.newTask;
+
+  if (newTask !== "" && !(count(personalTasks, newTask) === 1))
+    personalTasks.push(req.body.newTask);
+
+  res.redirect("/");
+
+});
+
+
+app.get("/work", (req, res) => {
   let today = new Date(); 
   let dateOpts = {
     weekday: "long",
@@ -29,27 +62,27 @@ app.get("/", (req, res) => {
   }
 
   let dayReadable = today.toLocaleString('en-US', dateOpts);
-
   let isWeekend = (today.getDay() == 6 || today.getDay() == 0) ? true : false;
-  let status = (isWeekend) ? "Time to party!" : "Time to work.";
+
+  let categPage;
+  let categ = categPage = "work";
 
   res.render("list", {
     dayReadable: dayReadable,
     isWeekend: isWeekend,
-    status: status,
-    taskList: taskList
+    categ: categ,
+    categPage: categPage,
+    taskList: workTasks
   });
-
-
 })
 
-app.post("/", (req, res) => {
+app.post("/work", (req, res) => {
   let newTask = req.body.newTask;
 
-  if (newTask !== "" && !(count(taskList, newTask) === 1))
-    taskList.push(req.body.newTask);
+  if (newTask !== "" && !(count(workTasks, newTask) === 1))
+    workTasks.push(req.body.newTask);
 
-  res.redirect("/");
+  res.redirect("/work");
 
 });
 
