@@ -32,6 +32,18 @@ header {
   margin-bottom: 20px;
 }
 
+#category {
+  font-size: 3rem;
+  text-transform: capitalize;
+  font-variant: small-caps;
+}
+
+#currentDate {
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-variant: small-caps;
+}
+
 #newTask {
   color: var(--fg-dark0);
   font-size: 1.7rem;

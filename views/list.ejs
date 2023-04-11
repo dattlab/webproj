@@ -12,15 +12,12 @@
 
 
     <header>
-      <% if (isWeekend) { %>
-        <h1 style="color: purple;"><%= dayReadable %></h1>
-      <% } else { %>
-        <h1><%= dayReadable %></h1>
-      <% } %>
+      <h2 id="category"><%= categ %></h2>
+      <h1 id="currentDate"><%= dayReadable %></h1>
     </header>
 
 
-    <form action="/" method="post">
+    <form action="<%= `/${categPage}` %>" method="post">
       <input id="newTask" type="text" name="newTask" autofocus autocomplete="off">
 
       <button type="submit">+</button>
