@@ -50,6 +50,7 @@ header {
   background-color: var(--bg-dark1);
   width: 100%;
   margin-bottom: 20px;
+  padding: 10px;
   border: 1px solid var(--fg-dark4);
   border-radius: 5px;
 }

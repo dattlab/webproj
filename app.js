@@ -1,6 +1,7 @@
 // ----- Load plugins
 const express = require("express");
 const https = require("https");
+const date = require(`${__dirname}/date.js`);
 
 // ----- Create express instance
 const app = express();
@@ -16,83 +17,53 @@ app.use(express.static(`${__dirname}/public`));
 // ----- Set EJS
 app.set("view engine", "ejs");
 
-let personalTasks = [];
-let workTasks = [];
+// ----- Global variables
+const personalTasks = [];
+const workTasks = [];
 
 // ----- Get-Post for main page
 app.get("/", (req, res) => {
-  let today = new Date(); 
-  let dateOpts = {
-    weekday: "long",
-    day: "numeric",
-    month: "long"
-  }
-
-  let dayReadable = today.toLocaleString('en-US', dateOpts);
-  let isWeekend = (today.getDay() == 6 || today.getDay() == 0) ? true : false;
-  let categPage = "";
-  let categ = "Personal"
+  let categ = "personal"
 
   res.render("list", {
-    dayReadable: dayReadable,
-    isWeekend: isWeekend,
+    dayReadable: date.getDateInfo().dayReadable,
+    isWeekend: date.getDateInfo().isWeekend,
     categ: categ,
-    categPage: categPage,
     taskList: personalTasks
   });
 })
 
 app.post("/", (req, res) => {
   let newTask = req.body.newTask;
+  let redirectPage = "/";
+  let temp = req.body.list === "personal" ? personalTasks : workTasks;
 
-  if (newTask !== "" && !(count(personalTasks, newTask) === 1))
-    personalTasks.push(req.body.newTask);
-
-  res.redirect("/");
-
-});
-
-
-app.get("/work", (req, res) => {
-  let today = new Date(); 
-  let dateOpts = {
-    weekday: "long",
-    day: "numeric",
-    month: "short"
+  if (newTask !== "" && !(temp.filter(e => e === newTask).length === 1)) {
+    if (req.body.list === "personal") {
+      personalTasks.push(req.body.newTask);
+    }
+    else {
+      workTasks.push(req.body.newTask);
+      redirectPage = "/work";
+    }
   }
 
-  let dayReadable = today.toLocaleString('en-US', dateOpts);
-  let isWeekend = (today.getDay() == 6 || today.getDay() == 0) ? true : false;
+  res.redirect(redirectPage);
+});
 
-  let categPage;
-  let categ = categPage = "work";
+app.get("/work", (req, res) => {
+  let categ = "work";
 
   res.render("list", {
-    dayReadable: dayReadable,
-    isWeekend: isWeekend,
+    dayReadable: date.dayReadable,
+    isWeekend: date.isWeekend,
     categ: categ,
-    categPage: categPage,
     taskList: workTasks
   });
 })
-
-app.post("/work", (req, res) => {
-  let newTask = req.body.newTask;
-
-  if (newTask !== "" && !(count(workTasks, newTask) === 1))
-    workTasks.push(req.body.newTask);
-
-  res.redirect("/work");
-
-});
 
 // ----- Port listener
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 })
 
-// ----- Functions
-function count(arr, element) {
-  /* Count number of specified element in array */
-  return arr.filter(e => e === element).length;
-}
