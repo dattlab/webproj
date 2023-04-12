@@ -2,9 +2,9 @@
   "scripts": {
     "start": "nodemon app.js"
   },
-  "name": "To Do App",
+  "name": "dattlab-blog",
   "version": "1.0.0",
-  "description": "Simple To Do list app",
+  "description": "Minimal blog website",
   "author": "dattlab",
   "license": "ISC",
   "dependencies": {
