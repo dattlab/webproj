@@ -83,6 +83,21 @@ body {
 
 /* ******************************* */
 
+.new-post-card {
+  margin-bottom: 20px;
+}
+
+.new-post-card-title {
+  font-size: 1.4rem;
+  margin-bottom: -10px;
+}
+
+.new-post-card-content {
+  font-size: 0.8rem;
+}
+
+/* ******************************* */
+
 /* Heading style */
 h1,
 h2,
@@ -111,6 +126,57 @@ a:hover {
 
 /* ******************************* */
 
+.new-post-title-entrybox {
+  margin-bottom: 20px;
+}
+
+label[for="newPostTitle"],
+label[for="newPostContent"] {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+input[name="newPostTitle"],
+textarea[name="newPostContent"],
+#publishButton {
+  width: 100%;
+}
+
+textarea[name="newPostContent"] {
+  resize: none;
+}
+
+#publishButton {
+  margin-top: 10px;
+  background-color: var(--bright-black);
+  color: var(--white);
+  border: none;
+  padding: 5px;
+  font-weight: bold;
+}
+
+#publishButton:hover {
+  background-color: var(--bright-blue);
+  color: var(--black);
+}
+
+/* ******************************* */
+
+/* Remove highlight to text input when in focus */
+input[name="newPostTitle"]:focus,
+input[name="newPostTitle"].form-control:focus,
+textarea[name="newPostContent"]:focus,
+textarea[name="newPostContent"].form-control:focus {
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+/* ******************************* */
+
 /* footer */
 #footer-body-sep {
   margin-top: 30px;
@@ -118,7 +184,8 @@ a:hover {
 }
 
 footer {
-  margin-top: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
   text-align: center;
 }
 

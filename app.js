@@ -17,10 +17,14 @@ app.use(express.static(`${__dirname}/public`));
 app.set("view engine", "ejs");
 
 // ----- Global variables
+const posts = []
+const opts = {
+  posts: posts
+}
 
 // ----- Get-Post for main page
 app.get("/", (req, res) => {
-  res.render("home");
+  res.render("home", opts);
 })
 
 app.get("/about", (req, res) => {
@@ -31,13 +35,39 @@ app.get("/contact", (req, res) => {
   res.render("contact")
 })
 
-// app.post("/", (req, res) => {
-// });
+app.get("/compose", (req, res) => {
+  res.render("compose")
+})
 
+app.get("/posts/:postId", (req, res) => {
+  let currentPosts = posts.map(
+    post => post.title.replace(/ +/g, '-').toLowerCase()
+  );
+  let postId = req.params.postId.replace(/ +/g, '-').toLowerCase();
+
+  if (currentPosts.includes(postId)) {
+    let reqPost = posts[currentPosts.indexOf(postId)];
+
+    res.render("post", reqPost);
+  }
+})
+
+app.post("/", (req, res) => {
+  if (req.body.newPostTitle != "" && req.body.newPostContent != "") {
+    let postData = {
+      title: req.body.newPostTitle,
+      content: req.body.newPostContent
+    }
+
+    posts.push(postData);
+
+    res.redirect("/");
+  }
+
+});
 
 
 // ----- Port listener
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 })
-
