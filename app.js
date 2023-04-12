@@ -20,10 +20,19 @@ app.set("view engine", "ejs");
 
 // ----- Get-Post for main page
 app.get("/", (req, res) => {
+  res.render("home");
 })
 
-app.post("/", (req, res) => {
-});
+app.get("/about", (req, res) => {
+  res.render("about")
+})
+
+app.get("/contact", (req, res) => {
+  res.render("contact")
+})
+
+// app.post("/", (req, res) => {
+// });
 
 
 
