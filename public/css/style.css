@@ -1,148 +1,199 @@
-@import "reset.css";
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,600;0,800;1,600&display=swap');
+@import url("reset.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
+
+/* ******************************* */
 
 :root {
-  --bg-dark0: #00010a;
-  --bg-dark1: #0a0e14;
-  --bg-dark2: #32302f;
-  --bg-dark3: #282828;
-  --bg-dark4: #504945;
+  --bg: #272822;
+  --fg: #e8e8e3;
 
-  --fg-dark0: #f9f57d;
-  --fg-dark1: #fbf1c7;
-  --fg-dark3: #f2e5bc;
-  --fg-dark4: #ebdbb2;
-  --dim-fg-dark: #a89984;
+  --black: #272822;
+  --blue: #ae81ff;
+  --purple: #f92772;
+  --cyan: #66d9ef;
+  --green: #a6e22d;
+  --yellow: #fd9720;
+  --red: #e73c50;
+  --white: #d8d8d3;
+
+  --bright-black: #383a3e;
+  --bright-blue: #ae81ff;
+  --bright-purple: #f92772;
+  --bright-red: #f92772;
+  --bright-cyan: #66d9ef;
+  --bright-green: #a6e22d;
+  --bright-yellow: #e6db74;
+  --bright-white: #e8e8e3;
 }
+
+/* ******************************* */
 
 html {
-  background-color: var(--bg-dark1);
-  color: var(--fg-dark1);
-  font-family: "Open Sans", sans-serif;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: "Roboto Mono", monospace;
 }
+
+/* ******************************* */
+
+/* Nav bar */
+nav {
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.9rem;
+}
+
+#nav-brand {
+  font-weight: bold;
+  margin-right: auto;
+  color: var(--bright-yellow);
+  text-decoration: none;
+}
+
+.nav-link {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 1.2rem;
+  padding-top: 8px;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: var(--bright-yellow);
+  text-decoration: underline 3px var(--bright-yellow);
+}
+
+nav a:last-child {
+  margin-right: 0;
+}
+
+#nav-body-sep {
+  border: 2px solid var(--bright-yellow);
+  margin-bottom: 30px;
+}
+
+/* ******************************* */
 
 body {
-  margin: 5% 30%;
+  margin: 1% auto;
+  max-width: 60%;
 }
 
-header {
-  color: var(--fg-dark0);
-  font-weight: 800;
+/* ******************************* */
+
+.new-post-card {
+  margin-bottom: 20px;
+}
+
+.new-post-card-title {
+  font-size: 1.4rem;
+  margin-bottom: -10px;
+}
+
+.new-post-card-content {
+  font-size: 0.8rem;
+}
+
+/* ******************************* */
+
+/* Heading style */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--bright-white);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+a {
+  color: var(--bright-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--bright-yellow);
+}
+
+/* ******************************* */
+
+.new-post-title-entrybox {
+  margin-bottom: 20px;
+}
+
+label[for="newPostTitle"],
+label[for="newPostContent"] {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+input[name="newPostTitle"],
+textarea[name="newPostContent"],
+#publishButton {
+  width: 100%;
+}
+
+textarea[name="newPostContent"] {
+  resize: none;
+}
+
+#publishButton {
+  margin-top: 10px;
+  background-color: var(--bright-black);
+  color: var(--white);
+  border: none;
+  padding: 5px;
+  font-weight: bold;
+}
+
+#publishButton:hover {
+  background-color: var(--bright-blue);
+  color: var(--black);
+}
+
+/* ******************************* */
+
+/* Remove highlight to text input when in focus */
+input[name="newPostTitle"]:focus,
+input[name="newPostTitle"].form-control:focus,
+textarea[name="newPostContent"]:focus,
+textarea[name="newPostContent"].form-control:focus {
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+/* ******************************* */
+
+/* footer */
+#footer-body-sep {
+  margin-top: 30px;
+  border: 2px solid var(--bright-yellow);
+}
+
+footer {
+  padding-top: 50px;
+  padding-bottom: 50px;
   text-align: center;
-  margin-bottom: 20px;
 }
 
-#category {
-  font-size: 3rem;
-  text-transform: capitalize;
-  font-variant: small-caps;
-}
+/* ******************************* */
 
-#currentDate {
-  font-size: 1.2rem;
-  font-weight: 600;
-  font-variant: small-caps;
+/* Media queries */
+@media (max-width: 750px) {
+  body {
+    max-width: 90%;
+  }
 }
-
-#newTask {
-  color: var(--fg-dark0);
-  font-size: 1.7rem;
-  background-color: var(--bg-dark1);
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid var(--fg-dark4);
-  border-radius: 5px;
-}
-
-button {
-  color: var(--fg-dark0);
-  font-weight: 800;
-  font-size: 1.9rem;
-  border: 0;
-  padding: 2px;
-  border-radius: 5px;
-  background-color: var(--bg-dark2);
-  width: 100%;
-}
-button:hover {
-  background-color: var(--bg-dark4);
-}
-
-section {
-  padding-top: 5%;
-  padding-bottom: 5%;
-}
-
-.taskItem {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 1.5rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* Hide the browser's default checkbox */
-.taskItem input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-/* Create a custom checkbox */
-.checkmark {
-  position: absolute;
-  top: 8px;
-  left: 0;
-  height: 23px;
-  width: 23px;
-  background-color: #eee;
-}
-
-.taskItem:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-
-/* When the checkbox is checked, add a blue background */
-.taskItem input:checked ~ .checkmark {
-  background-color: #6994BF;
-}
-
-.taskItem input:checked + .taskTitle {
-  color: var(--dim-fg-dark);
-  font-style: italic;
-  text-decoration: line-through;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-/* Show the checkmark when checked */
-.taskItem input:checked ~ .checkmark:after {
-  display: block;
-}
-
-/* Style the checkmark/indicator */
-.taskItem .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
