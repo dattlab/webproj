@@ -1,6 +1,7 @@
 // ----- Load plugins
 const express = require("express");
 const https = require("https");
+const _ = require("lodash");
 
 // ----- Create express instance
 const app = express();
@@ -40,10 +41,8 @@ app.get("/compose", (req, res) => {
 })
 
 app.get("/posts/:postId", (req, res) => {
-  let currentPosts = posts.map(
-    post => post.title.replace(/ +/g, '-').toLowerCase()
-  );
-  let postId = req.params.postId.replace(/ +/g, '-').toLowerCase();
+  let currentPosts = posts.map( post => _.kebabCase(post.title) );
+  let postId = _.kebabCase(req.params.postId);
 
   if (currentPosts.includes(postId)) {
     let reqPost = posts[currentPosts.indexOf(postId)];
