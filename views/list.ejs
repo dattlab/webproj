@@ -23,11 +23,13 @@
 
     <section>
       <% taskList.forEach((task) => { %>
-        <label class="taskItem">
-          <input type="checkbox">
-          <span class="taskTitle"><%= task.name %></span>
-          <span class="checkmark"></span>
-        </label>
+        <form action="/delete", method="post">
+          <label class="taskItem">
+            <input type="checkbox" onChange="this.form.submit()" name="checkBox" value="<%= categ %>-<%= task._id %>">
+            <span class="taskTitle"><%= task.name %></span>
+            <span class="checkmark"></span>
+          </label>
+        </form>
       <% }) %>
     </section>
 

@@ -59,18 +59,15 @@ Task.find()
 
 
 // ----- Global variables
-const workTasks = [];
 const dayReadable = date.getDateInfo().dayReadable;
 const isWeekend = date.getDateInfo().isWeekend;
 
 // ----- Get-Post for main page
-app.get("/", (req, res) => {
-  let categ = "personal"
+app.get("/:customTaskListName", (req, res) => {
+  let categ = req.params.customTaskListName || "today";
 
   Task.find()
       .then(function (foundTasks) {
-        console.log(foundTasks);
-
         const taskList = foundTasks.filter((task) => {
           if (task.categ === categ || task.categ === "default") {
             return task.name;
@@ -90,44 +87,32 @@ app.get("/", (req, res) => {
 })
 
 app.post("/", (req, res) => {
-  let newTask = req.body.newTask;
-  let redirectPage = "/";
-  let temp = req.body.list === "personal" ? personalTasks : workTasks;
+  const newTask = req.body.newTask;
+  const categ = req.body.list;
 
-  if (newTask !== "" && !(temp.filter(e => e === newTask).length === 1)) {
-    if (req.body.list === "personal") {
-      personalTasks.push(req.body.newTask);
-    }
-    else {
-      workTasks.push(req.body.newTask);
+  let redirectPage = "/";
+
+  if (newTask !== "") {
+    const task = new Task({ name: newTask, categ: categ, });
+    task.save();
+
+    if (categ === "work") {
       redirectPage = "/work";
     }
   }
 
-  Task.insertOne();
-
   res.redirect(redirectPage);
+
 });
 
-app.get("/work", (req, res) => {
-  let categ = "work";
+app.post("/delete", (req, res) => {
+  const [categ, checkedTaskID] = req.body.checkBox.split("-");
 
-  Task.find()
-      .then(function (foundTasks) {
-        console.log(foundTasks);
-        const taskList = foundTasks.filter((task) => {
-          if (task.categ === categ || task.categ === "default") {
-            return task.name;
-          }
-        });
-        res.render("list", {
-          dayReadable: dayReadable,
-          isWeekend: isWeekend,
-          categ: categ,
-          taskList: taskList
-        });
+  Task.findByIdAndRemove(checkedTaskID)
+      .then(() => {
+        res.redirect(categ === "personal" ? "/" : `/${categ}`);
       })
-      .catch(function (err) {
+      .catch((err) => {
         console.log(err);
       });
 })
