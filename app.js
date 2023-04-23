@@ -63,8 +63,8 @@ const dayReadable = date.getDateInfo().dayReadable;
 const isWeekend = date.getDateInfo().isWeekend;
 
 // ----- Get-Post for main page
-app.get("/:customTaskListName", (req, res) => {
-  let categ = req.params.customTaskListName || "today";
+app.get("/", (req, res) => {
+  let categ = "today";
 
   Task.find()
       .then(function (foundTasks) {
@@ -86,6 +86,27 @@ app.get("/:customTaskListName", (req, res) => {
 
 })
 
+app.get("/:customTaskList", (req, res) => {
+  let categ = req.params.customTaskList || "today";
+
+  Task.find()
+      .then((foundTasks) => {
+        const taskList = foundTasks.filter((task) => {
+          if (task.categ===categ || task.categ==="default")
+            return task.name;
+        })
+        res.render("list", {
+          dayReadable: dayReadable,
+          isWeekend: isWeekend,
+          categ: categ,
+          taskList: taskList
+        });
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+});
+
 app.post("/", (req, res) => {
   const newTask = req.body.newTask;
   const categ = req.body.list;
@@ -96,8 +117,8 @@ app.post("/", (req, res) => {
     const task = new Task({ name: newTask, categ: categ, });
     task.save();
 
-    if (categ === "work") {
-      redirectPage = "/work";
+    if (categ !== "today") {
+      redirectPage = `/${categ}`;
     }
   }
 
@@ -110,7 +131,7 @@ app.post("/delete", (req, res) => {
 
   Task.findByIdAndRemove(checkedTaskID)
       .then(() => {
-        res.redirect(categ === "personal" ? "/" : `/${categ}`);
+        res.redirect(categ === "today" ? "/" : `/${categ}`);
       })
       .catch((err) => {
         console.log(err);
