@@ -21,14 +21,6 @@
       </h1>
     </header>
 
-
-    <form action="/" method="post">
-      <input id="newTask" type="text" name="newTask" placeholder="New Task" autofocus autocomplete="off">
-
-      <button type="submit" name="list" value="<%= categ %>">+</button>
-    </form>
-
-
     <section>
       <% for (let i=0; i < taskList.length; i++) { %>
         <label class="taskItem">
@@ -39,6 +31,11 @@
       <% } %>
     </section>
 
+    <form action="/" method="post">
+      <input id="newTask" type="text" name="newTask" placeholder="New Task" autofocus autocomplete="off">
+
+      <button type="submit" name="list" value="<%= categ %>">+</button>
+    </form>
 
   </body>
 </html>
